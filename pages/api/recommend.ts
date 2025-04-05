@@ -15,6 +15,7 @@ export default async function handler(req, res) {
     const reply = completion.choices[0].message.content;
     res.status(200).json({ result: reply });
   } catch (error) {
+    console.error('GPT error:', error);
     res.status(500).json({ result: 'GPT 回覆失敗，請稍後再試' });
   }
 }
