@@ -1,12 +1,11 @@
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAI from 'openai';
 
-const config = new Configuration({ apiKey: process.env.OPENAI_API_KEY });
-const openai = new OpenAIApi(config);
+const openai = new OpenAI({apiKey: process.env.OPENAI_API_KEY});
 
 export default async function handler(req, res) {
   const { query } = req.body;
   try {
-    const completion = await openai.createChatCompletion({
+    const completion = await openai.chat.completions.create({
       model: 'gpt-4',
       messages: [
         { role: 'system', content: '你是蝦皮購物小助手，語氣自然、有說服力，請根據使用者需求推薦商品' },
