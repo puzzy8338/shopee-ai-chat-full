@@ -12,7 +12,7 @@ export default async function handler(req, res) {
         { role: 'user', content: `請推薦蝦皮商品，需求：${query}` }
       ]
     });
-    const reply = completion.data.choices[0].message.content;
+    const reply = completion.choices[0].message.content;
     res.status(200).json({ result: reply });
   } catch (error) {
     res.status(500).json({ result: 'GPT 回覆失敗，請稍後再試' });
